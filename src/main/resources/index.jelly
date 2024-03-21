@@ -1,0 +1,4 @@
+<?jelly escape-by-default='true'?>
+<div>
+    Provides the "People" view and API that were part of Jenkins up to version TODO.
+</div>
