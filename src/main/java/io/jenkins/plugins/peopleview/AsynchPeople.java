@@ -83,14 +83,12 @@ public class AsynchPeople extends ProgressiveRendering implements Action {
         return "asynchPeople";
     }
 
-    /** @see jenkins.model.Jenkins#getAsynchPeople */
     public AsynchPeople(Jenkins parent) {
         this.parent = parent;
         items = parent.getItems();
         unknown = User.getUnknown();
     }
 
-    /** @see View#getAsynchPeople */
     public AsynchPeople(View parent) {
         this.parent = parent;
         items = parent.getItems();
