@@ -75,7 +75,7 @@ public class AsynchPeople extends ProgressiveRendering implements Action {
 
     @Override
     public String getDisplayName() {
-        return "People"; // TODO i18n
+        return Messages.People_DisplayName();
     }
 
     @Override
