@@ -32,8 +32,7 @@
     <revision>1.0</revision>
     <changelist>-SNAPSHOT</changelist>
     <!-- https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/ -->
-    <!-- TODO Replace with first release without People view -->
-    <jenkins.version>2.451-rc34749.a_a_ea_7703da_51</jenkins.version>
+    <jenkins.version>2.452</jenkins.version>
     <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
     <spotless.check.skip>false</spotless.check.skip>
   </properties>
