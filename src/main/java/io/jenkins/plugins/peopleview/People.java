@@ -55,7 +55,7 @@ public class People implements Action {
 
     @Override
     public String getDisplayName() {
-        return "People"; // TODO i18n
+        return Messages.People_DisplayName();
     }
 
     @Override
