@@ -40,8 +40,8 @@ public class TransientFactory extends TransientViewActionFactory {
         final Jenkins j = Jenkins.get();
         if (j.equals(v.getOwner()) && v instanceof AllView) {
             // If this is the top-level (~not in a folder) AllView, show everything
-            return List.of(new People(j), new AsynchPeople((j)));
+            return List.of(new PeopleAction(j), new AsynchPeopleAction(j));
         }
-        return List.of(new People(v), new AsynchPeople(v));
+        return List.of(new PeopleAction(v), new AsynchPeopleAction(v));
     }
 }
