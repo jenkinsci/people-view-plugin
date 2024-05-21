@@ -27,7 +27,6 @@ package io.jenkins.plugins.peopleview;
 
 import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Functions;
-import hudson.model.Action;
 import hudson.model.Api;
 import hudson.model.Item;
 import hudson.model.Job;
@@ -59,7 +58,7 @@ import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.export.Exported;
 import org.kohsuke.stapler.export.ExportedBean;
 
-public class AsynchPeople extends ProgressiveRendering implements Action {
+public class AsynchPeople extends ProgressiveRendering {
 
     private final Collection<TopLevelItem> items;
     private final User unknown;
@@ -67,21 +66,6 @@ public class AsynchPeople extends ProgressiveRendering implements Action {
     private final Set<User> modified = new HashSet<>();
     private final String iconSize;
     public final ModelObject parent;
-
-    @Override
-    public String getIconFileName() {
-        return "symbol-people";
-    }
-
-    @Override
-    public String getDisplayName() {
-        return Messages.People_DisplayName();
-    }
-
-    @Override
-    public String getUrlName() {
-        return "asynchPeople";
-    }
 
     public AsynchPeople(Jenkins parent) {
         this.parent = parent;

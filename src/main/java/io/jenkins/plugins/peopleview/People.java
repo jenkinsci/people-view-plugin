@@ -25,7 +25,6 @@
 
 package io.jenkins.plugins.peopleview;
 
-import hudson.model.Action;
 import hudson.model.Api;
 import hudson.model.Item;
 import hudson.model.Job;
@@ -47,22 +46,7 @@ import org.kohsuke.stapler.export.Exported;
 import org.kohsuke.stapler.export.ExportedBean;
 
 @ExportedBean
-public class People implements Action {
-    @Override
-    public String getUrlName() {
-        return "people";
-    }
-
-    @Override
-    public String getDisplayName() {
-        return Messages.People_DisplayName();
-    }
-
-    @Override
-    public String getIconFileName() {
-        return null; // no sidepanel link
-    }
-
+public class People {
     @Exported
     public final List<UserInfo> users;
 
