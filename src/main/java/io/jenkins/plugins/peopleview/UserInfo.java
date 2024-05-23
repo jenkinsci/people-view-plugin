@@ -37,7 +37,7 @@ import org.kohsuke.stapler.export.ExportedBean;
 
 @SuppressFBWarnings("EQ_COMPARETO_USE_OBJECT_EQUALS") // TODO Unchanged from core
 @ExportedBean(defaultVisibility = 2)
-public class UserInfo implements Comparable<UserInfo> {
+class UserInfo implements Comparable<UserInfo> {
     private final User user;
     /**
      * When did this user made a last commit on any of our projects? Can be null.
