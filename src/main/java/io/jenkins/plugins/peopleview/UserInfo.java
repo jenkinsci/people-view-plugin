@@ -88,7 +88,7 @@ public class UserInfo implements Comparable<UserInfo> {
 
     public String getTimeSortKey() {
         if (lastChange == null) return "-";
-        return Util.XS_DATETIME_FORMATTER.format(lastChange.getTime());
+        return Util.XS_DATETIME_FORMATTER2.format(lastChange.getTime().toInstant());
     }
 
     @Override
