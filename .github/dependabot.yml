@@ -12,6 +12,9 @@ updates:
       - dependency-name: "io.jenkins.tools.bom:bom-2.*.x"
       - dependency-name: "io.jenkins.tools.incrementals:git-changelist-maven-extension"
       - dependency-name: "org.jenkins-ci.plugins:plugin"
+
+      # Kinda depends on the jenkins.version we use, so exclude from Dependabot
+      - dependency-name: "org.kohsuke:access-modifier-suppressions"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
