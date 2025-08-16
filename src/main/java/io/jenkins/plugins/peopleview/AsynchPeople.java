@@ -189,20 +189,22 @@ public class AsynchPeople extends ProgressiveRendering {
     }
 
     public Api getApi() {
-        return new Api(new AsynchPeople.InnerPeople());
+        return new Api(new People());
     }
 
     /** JENKINS-16397 workaround */
     @Restricted(NoExternalUse.class)
     @ExportedBean
-    public final class InnerPeople {
+    public final class People {
 
-        private People people;
+        private io.jenkins.plugins.peopleview.People people;
 
         @Exported
         public synchronized List<UserInfo> getUsers() {
             if (people == null) {
-                people = parent instanceof Jenkins ? new People((Jenkins) parent) : new People((View) parent);
+                people = parent instanceof Jenkins
+                        ? new io.jenkins.plugins.peopleview.People((Jenkins) parent, true)
+                        : new io.jenkins.plugins.peopleview.People((View) parent, true);
             }
             return people.users;
         }

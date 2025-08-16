@@ -52,21 +52,29 @@ public class People {
 
     public final ModelObject parent;
 
-    public People(Jenkins parent) {
+    public People(Jenkins parent, boolean loadPeople) {
         this.parent = parent;
         // for Hudson, really load all users
-        Map<User, UserInfo> users = getUserInfo(parent.getItems());
-        User unknown = User.getUnknown();
-        for (User u : User.getAll()) {
-            if (u == unknown) continue; // skip the special 'unknown' user
-            if (!users.containsKey(u)) users.put(u, new UserInfo(u, null, null));
+        if (loadPeople) {
+            Map<User, UserInfo> users = getUserInfo(parent.getItems());
+            User unknown = User.getUnknown();
+            for (User u : User.getAll()) {
+                if (u == unknown) continue; // skip the special 'unknown' user
+                if (!users.containsKey(u)) users.put(u, new UserInfo(u, null, null));
+            }
+            this.users = toList(users);
+        } else {
+            this.users = Collections.emptyList();
         }
-        this.users = toList(users);
     }
 
-    public People(View parent) {
+    public People(View parent, boolean loadPeople) {
         this.parent = parent;
-        this.users = toList(getUserInfo(parent.getItems()));
+        if (loadPeople) {
+            this.users = toList(getUserInfo(parent.getItems()));
+        } else {
+            this.users = Collections.emptyList();
+        }
     }
 
     private Map<User, UserInfo> getUserInfo(Collection<? extends Item> items) {
@@ -104,7 +112,10 @@ public class People {
     }
 
     public Api getApi() {
-        return new Api(this);
+        if (parent instanceof Jenkins) {
+            return new Api(new AsynchPeople((Jenkins) parent).new People());
+        }
+        return new Api(new AsynchPeople((View) parent).new People());
     }
 
     /**
